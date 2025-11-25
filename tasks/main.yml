@@ -1,0 +1,21 @@
+---
+# webfer.drupal_settings/tasks/main.yml
+
+- name: 'Ensure Drupal default directory exists'
+  file:
+    state: directory
+    path: "{{ item.0.drupal_root }}/{{ item.1.name | default('default') }}"
+  with_subelements:
+    - '{{ drupal_settings }}'
+    - sites
+  no_log: true
+
+- name: 'Create Drupal settings files'
+  template:
+    src: settings.php.j2
+    dest: "{{ item.0.drupal_root }}/{{ item.1.name | default('default') }}/{{ item.1.filename | default('settings.php') }}"
+    mode: '0640'
+  with_subelements:
+    - '{{ drupal_settings }}'
+    - sites
+  no_log: true

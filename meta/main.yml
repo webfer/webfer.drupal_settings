@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  role_name: drupal_settings
+  author: webfer
+  description: Generates Drupal settings.php-style files for deployments
+  license: MIT
+  min_ansible_version: '2.9'
+  platforms:
+    - name: Debian
+      versions: [all]
+    - name: Ubuntu
+      versions: [all]
+    - name: EL
+      versions: [all]
+  galaxy_tags:
+    - drupal
+    - php
+    - deploy
+    - ansistrano
+dependencies: []
